@@ -7,10 +7,7 @@
     position: fixed;
     box-shadow: 0px 3px 10px black;
     border-bottom-right-radius: 20px;
-    
-
 }
-
 .textNavbar{
     color: white;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -21,12 +18,9 @@
     display: inline-block;
     transition: font-size 0.3s ease;
 }
-
 .textNavbar:hover {
     font-size: 2em;
   }
-
-
 .buttonNavbar{
     background-color: white;
     float: right;
@@ -37,7 +31,6 @@
     height: 30px;
     border-radius: 20px;
 }
-
 .footer{
     background-color: darkcyan;
     width: 100%;
@@ -47,18 +40,15 @@
     position: fixed;
     box-shadow: 0px 3px 10px black;
 }
-
 .footerText{
     color: white;
     padding-left: 10px;
     padding-right: 10px;
     
 }
-
 .content{
     padding-top: 30px;
 }
-
 .currentPage{
     background-color: darkcyan;
     color: white;
@@ -75,7 +65,6 @@
     box-shadow: 0px 3px 3px black;
 
 }
-
 .noutati{
     position: fixed;
     right: 2%;
@@ -89,59 +78,91 @@
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     box-shadow: 0px 3px 10px black;
-
 }
-
 .bodyNoutati{
     padding-left: 20px;
     padding-right: 10px;
     background-color: rgb(0, 109, 109);
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 17px;
-
 }
-
-
 .titluNoutati{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     font-size: 20px;
     transition: font-size 0.3s ease;
 }
-
 .titluNoutati:hover {
     font-size: 1.3em;
   }
-
-
 .adminButton{
     border-radius: 40px;
-    margin-top:13px;
-    
+    margin-top:13px;  
 }
-
 .msgWelcome{
     margin-left: 200px;
     margin-top: 80px;
-
 }
-
 .textWelcome{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 35px;
     background: linear-gradient(to top, #f70098, #ff3300);
     -webkit-background-clip: text;
-    background-color: text;
     color: transparent;
 }
-
 .mesajSpecial{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 25px;
     background: linear-gradient(to top, #020077, #268794);
     -webkit-background-clip: text;
-    background-color: text;
     color: transparent;
-
 }
 
+
+.contactImg{
+    width:50px;
+    text-align: center;
+}
+.telefon{
+    text-align: center;
+    position: fixed;
+    top: 500px;
+    left: 50px;
+    font-size: 20px;
+    transition: font-size 0.3s ease;
+}
+.fizic{
+    text-align: center;
+    position: fixed;
+    top: 500px;
+    right: 730px;
+    font-size: 20px;
+    transition: font-size 0.3s ease;
+}
+.email{
+    text-align: center;
+    position: fixed;
+    top: 500px;
+    right: 50px;
+    font-size: 20px;
+    transition: font-size 0.3s ease;
+}
+
+.telefon:hover{
+    font-size: 1.2em;
+}
+.fizic:hover{
+    font-size: 1.2em;
+}
+.email:hover{
+    font-size: 1.2em;
+}
+
+#textContact{
+    text-align: center;
+    margin-top: 150px;
+    font-size: 40px;
+    background: linear-gradient(to top, #020077, #268794);
+    -webkit-background-clip: text;
+    color: transparent;
+}
