@@ -1,0 +1,238 @@
+.navbar{
+    width: 100%;
+    height: 60px;
+    left: 0%;
+    top: 0px;
+    background-color: darkcyan;
+    position: fixed;
+    box-shadow: 0px 3px 10px black;
+    border-bottom-right-radius: 20px;
+}
+
+.textNavbar{
+    color: white;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 30px;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-bottom: 0px;
+    display: inline-block;
+    transition: font-size 0.3s ease;
+}
+.textNavbar:hover {
+    font-size: 2em;
+  }
+.buttonNavbar{
+    background-color: white;
+    float: right;
+    margin-top: 15px;
+    margin-right: 10px;
+    size: 20px;
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px black;
+    border-bottom-right-radius: 20px;
+    border-color: darkcyan;
+
+}
+.buttonNavbar:hover {
+    background-color:rgb(0, 109, 109);
+    color: white;
+  }
+.footer{
+    background-color: darkcyan;
+    width: 100%;
+    height: 40px;
+    left: 0%;
+    bottom: 0px;
+    position: fixed;
+    box-shadow: 0px 3px 10px black;
+}
+.footerText{
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    
+}
+.content{
+    padding-top: 30px;
+}
+.currentPage{
+    background-color: darkcyan;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    left: 0%;
+    width: 7%;
+    height: 30px;
+    position: fixed;
+    font-size: 20px;
+    text-align: center;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    min-width: 100px;
+    box-shadow: 0px 3px 3px black;
+
+}
+.noutati{
+    position: fixed;
+    right: 2%;
+    top: 10%;
+    color: white;
+    background-color: darkcyan;
+    width: 480px;
+    height: 750px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-shadow: 0px 3px 10px black;
+}
+.bodyNoutati{
+    padding-left: 20px;
+    padding-right: 10px;
+    background-color: rgb(0, 109, 109);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 17px;
+}
+.titluNoutati{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    font-size: 20px;
+    transition: font-size 0.3s ease;
+}
+.titluNoutati:hover {
+    font-size: 1.3em;
+  }
+.adminButton{
+    border-radius: 40px;
+    margin-top:13px;  
+}
+.msgWelcome{
+    margin-left: 200px;
+    margin-top: 80px;
+}
+.textWelcome{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 35px;
+    background: linear-gradient(to top, #f70098, #ff3300);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+.mesajSpecial{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 25px;
+    background: linear-gradient(to top, #020077, #268794);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+
+.contactImg{
+    width:50px;
+    text-align: center;
+}
+.telefon{
+    text-align: center;
+    position: fixed;
+    top: 500px;
+    left: 50px;
+    font-size: 20px;
+    transition: font-size 0.3s ease;
+}
+.fizic{
+    text-align: center;
+    position: fixed;
+    top: 500px;
+    right: 730px;
+    font-size: 20px;
+    transition: font-size 0.3s ease;
+}
+.email{
+    text-align: center;
+    position: fixed;
+    top: 500px;
+    right: 50px;
+    font-size: 20px;
+    transition: font-size 0.3s ease;
+}
+
+.telefon:hover{
+    font-size: 1.2em;
+}
+.fizic:hover{
+    font-size: 1.2em;
+}
+.email:hover{
+    font-size: 1.2em;
+}
+
+#textContact{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 40px;
+    text-align: center;
+    margin-top: 100px;
+    background-color: darkcyan;
+    border-radius: 20px;
+    margin-left: 400px;
+    margin-right: 400px;
+    padding-bottom: 5px;
+    color:white;
+    box-shadow: 0px 0px 10px black;
+    border-bottom-right-radius: 20px;
+}
+#titluGalerie{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 40px;
+    text-align: center;
+    top: 50px;
+    background-color: darkcyan;
+    border-radius: 20px;
+    margin-left: 500px;
+    margin-right: 500px;
+    padding-bottom: 5px;
+    color:white;
+    box-shadow: 0px 0px 10px black;
+    border-bottom-right-radius: 20px;
+}
+
+.galerie{
+    display: none;
+    position:fixed;
+    left: 25%;
+    width:1000px;
+    height:560px;
+    box-shadow: 0px 0px 15px black;
+}
+
+#galerieNextButton{
+    border-radius:20px;
+    position:fixed;
+    right:50px;
+    top: 500px;
+    width:300px;
+    height:150px;
+    background-color:darkcyan;
+    font-size: 100px;
+    transition: font-size 0.3s ease;    
+}
+#galerieNextButton:hover{
+    font-size: 140px;
+    color:white;
+}
+
+#galeriePrevButton{
+    border-radius:20px;
+    position:fixed;
+    left:50px;
+    top: 500px;
+    width:300px;
+    height:150px;
+    background-color:darkcyan;
+    font-size: 100px;
+    transition: font-size 0.3s ease; 
+}
+#galeriePrevButton:hover{
+    font-size: 140px;
+    color:white;
+}
