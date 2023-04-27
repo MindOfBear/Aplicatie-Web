@@ -2,7 +2,7 @@
 include "header.html";
 ?>
 <p class = "currentPage">Galerie</p>
-<p id ="titluGalerie">Ne face placere sa va prezentam cateva poze cu noi pe scena!</p>
+<p id ="titluGalerie">Aici puteti naviga prin cateva poze cu noi!</p>
 <div class="slideshow">
   <img class="galerie" id = "poza1" src="galerie/trupa1.jpg">
   <img class="galerie" id = "poza2"src="galerie/trupa2.jpg">
@@ -37,5 +37,5 @@ changePhoto();
 
 
 <?php
-include "footer.html";
+include "footer.php";
 ?>

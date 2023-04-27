@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "header.html";
 ?>
 <p class = "currentPage">Home</p>
@@ -21,5 +22,5 @@ include "header.html";
 <img src = "galerie/lightsonme.png">
 
 <?php
-include "footer.html";
+include "footer.php";
 ?>

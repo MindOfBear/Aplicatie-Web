@@ -1,7 +1,9 @@
 <?php
 require_once("connect.php");
 include "header.html";
+session_start();
 
+$msgLogin = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
@@ -17,19 +19,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $hash = $row['password'];
 
         if (password_verify($password, $hash)) {
-            echo "<h1>Conectat cu succes!</h1>";
+            $_SESSION["loggedIn"] = True;
         } else {
-            echo "<h1 id ='textLogin'>Username or password are invalid!</h1>";
-;
+            $msgLogin = "Username or password are invalid!";
         }
     } else {
-        echo "<h1 id ='textLogin'>Username or password are invalid!</h1>";
+        $msgLogin = "Username or password are invalid!";
     }
 }
 ?>
+<?php if(isset($_SESSION["loggedIn"])) { ?>
+<p class = "currentPage" style="color:goldenrod">ADMIN</p>
+<div class = "adminNoutati">
+    <p>Management noutati</p>
+    
+</div>
 
-<p class = "currentPage" style="color:red">ADMIN</p>
-
+<?php } else {?>
 <div class="loginForm">
     <h1>Administrator view</h1>
     <form method="POST">
@@ -38,10 +44,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="password" id = "textLogin">Password</label><br>
         <input id="inputLogin" type="password" name ="password"><br>
         <button id = "loginButton">Log In</button>
-        <p id = "invalidData">Username or password is invalid!</p>
+        <p style = "color: lightblue"><?php echo $msgLogin;?></p>
     </form>
 </div>
-
 <?php
-include "footer.html";
+}
+include "footer.php";
 ?>
