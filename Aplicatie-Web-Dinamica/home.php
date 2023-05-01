@@ -1,14 +1,26 @@
 <?php
 session_start();
 include "header.html";
+require_once "connect.php";
 ?>
 <p class = "currentPage">Home</p>
 
 <div class ="noutati">
     <p class="titluNoutati">Noutati & Anunturi</p>
     <div class = "bodyNoutati">
-        <p>26/04/2023 - datorita lucrariilor de mententanta la teatrul Marin Sorescu, va trebui sa amanam piesa de teatru, vom reveni cu mai multe detalii</p>
-        <p>26/04/2023 - datorita lucrariilor de mententanta la teatrul Marin Sorescu, va trebui sa amanam piesa de teatru, vom reveni cu mai multe detalii</p>
+        <?php 
+            $stmt = $connect->prepare("SELECT * FROM noutati ORDER BY data DESC");
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $rowCounter = $result->num_rows;        
+            while($row = $result->fetch_assoc()) {        
+        ?>
+        <div class="noutatiParagrafe">
+            <p class="homeNoutatiText"><?php echo htmlspecialchars($row['descriere']);?></p>
+            <p class="homeNoutatiData"><?php echo htmlspecialchars($row['data']);?></p>
+        </div>
+    <?php }?>  
+    
     </div>
 </div>
 

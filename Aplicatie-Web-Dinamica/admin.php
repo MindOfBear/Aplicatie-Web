@@ -1,11 +1,16 @@
 <?php
 require_once("connect.php");
 include "header.html";
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $msgLogin = "";
 $emptyLogin="";
-$notNull = "";
+if (isset($_SESSION["eventType"])){ 
+    $eventType = $_SESSION["eventType"];
+    $_SESSION["eventType"] = "";
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
@@ -38,22 +43,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <p class = "currentPage" style="color:goldenrod">ADMIN</p>
 <div class = "adminNoutati">
     <h1>Manage News</h1>
+    <p style = "color:lightblue">
+    <?php
+        if(isset($eventType) && $eventType === "EMPTY_NEWS") 
+        {
+            echo "Nu poti adauga un anunt gol!";  
+        } else if (isset($eventType) && $eventType === "ADDED_NEWS"){
+            echo "Adaugata cu succes!"; 
+        } else if (isset($eventType) && $eventType === "DELETE_NEWS"){
+            echo "Anuntul a fost sters cu succes!"; 
+        } else if (isset($eventType) && $eventType === "EDITED_NEWS"){
+            echo "Anuntul a fost editat cu succes!"; 
+        } 
+        
+     ?>
+     </p>
     <form method = "POST" action="administrare/manageNoutati.php">
-        <p style = "color:lightblue"><?php $notNull?></p>
-        <textarea for = "inputNoutati" type = "text" id = inputNoutati></textarea><br>
+        <textarea name = "inputNoutati" type = "text" id = inputNoutati></textarea><br>
         <button id = "sendButton">Adauga</button>
     </form>
 
-    <form method = "GET" action = "administrare/manageNoutati.php">
-        <div class="displayInfo">
+    <div class="displayInfo">
+        
+        <?php 
+            $stmt = $connect->prepare("SELECT * FROM noutati ORDER BY data DESC");
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $rowCounter = $result->num_rows;        
+            while($row = $result->fetch_assoc()) {        
+        ?>
             <div class="displayInfoSeparat">
-                <h4>Acesta este un exemplu de anunt trebuie sa scriu mult sa vad daca se afiseaza, probabil o sa apara bine</h4>
-                <button id = "manageButton">EDIT</button>
-                <button id = "manageButton">DELETE</button>
+                <h4><?php echo htmlspecialchars($row['descriere']); ?></h4>
+                <div class="displayInfoButtons">
+                <form method  = "POST" action = "administrare/manageNoutatiEdit.php?id=<?php echo $row['id']; ?>"> 
+                    <button id = "manageButton">EDIT</button>
+                </form>
+                <form method  = "POST" action = "administrare/manageNoutatiDelete.php?id=<?php echo $row['id']; ?>"> 
+                    <button id = "manageButton">DELETE</button>
+                </form>
+                </div>
             </div>
-            
-        </div>
-    </form>
+        <?php }?>     
+        
+        
+    </div>
     
 </div>
 
