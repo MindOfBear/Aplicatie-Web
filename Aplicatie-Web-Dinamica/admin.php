@@ -54,17 +54,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "Anuntul a fost sters cu succes!"; 
         } else if (isset($eventType) && $eventType === "EDITED_NEWS"){
             echo "Anuntul a fost editat cu succes!"; 
-        } 
-        
+        }         
      ?>
      </p>
     <form method = "POST" action="administrare/manageNoutati.php">
         <textarea name = "inputNoutati" type = "text" id = inputNoutati></textarea><br>
         <button id = "sendButton">Adauga</button>
     </form>
-
-    <div class="displayInfo">
-        
+    <div class="displayInfo">       
         <?php 
             $stmt = $connect->prepare("SELECT * FROM noutati ORDER BY data DESC");
             $stmt->execute();
@@ -83,12 +80,66 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </form>
                 </div>
             </div>
-        <?php }?>     
-        
-        
+        <?php }?>          
     </div>
-    
 </div>
+
+
+<div class="manageTeam">
+    <h1>Manage Team</h1>
+    <p style = "color:lightblue; font-size: 12px;">
+    <?php
+        if(isset($eventType) && $eventType === "EMPTY_MEMBERS") 
+        {
+            echo "Toate campuriile trebuie completate!";  
+        } else if (isset($eventType) && $eventType === "ADDED_MEMBER"){
+            echo "Membru adaugat cu succes!";      
+        } else if (isset($eventType) && $eventType === "DELETE_MEMBER"){
+            echo "Membrul a fost sters!";      
+        } else if (isset($eventType) && $eventType === "EDITED_MEMBER"){
+            echo "Membrul a fost actualizat cu succes!";      
+        }
+     ?>
+     </p>
+    <form method = "POST" action = "administrare/manageTeam.php">
+        <input name = "inputNumeMembru" type = "text" id = "inputMembers" placeholder="Nume"><br>
+        <label for = "inputGradMembru">Grad </label>
+        <select name = "inputGradMembru" id = "listaGradMembru">
+            <option value = "Regizor">Regizor</option>
+            <option value = "Actor">Actor</option>
+            <option value = "Scenograf">Scenograf</option>
+            <option value = "Backstage">Backstage</option>
+        </select><br>
+        <input name = "inputPozaMembru" type = "text" id = "inputMembers" placeholder="Nume poza"><br>
+        <textarea name = "inputDescriereMembru" type = "text" id = "inputMembersTextarea" placeholder="Descriere"></textarea><br>
+        <button id = "sendButton">Adauga</button>
+    </form>
+    <div class="displayInfo">       
+        <?php 
+            $stmt = $connect->prepare("SELECT * FROM members");
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $rowCounter = $result->num_rows;        
+            while($row = $result->fetch_assoc()) {        
+        ?>
+            <div class="displayInfoSeparat">
+                <h4><?php echo "Nume: " . htmlspecialchars($row['nume']); ?></h4>
+                <h4><?php echo "Tip: " . htmlspecialchars($row['tip']); ?></h4>
+                <h4><?php echo "Descriere: " . htmlspecialchars($row['descriere']); ?></h4>
+                <h4><?php echo "Poza: " . htmlspecialchars($row['poza']); ?></h4>
+                <div class="displayInfoButtons">
+                <form method  = "POST" action = "administrare/manageTeamEdit.php?id=<?php echo $row['id']; ?>"> 
+                    <button id = "manageButton">EDIT</button>
+                </form>
+                <form method  = "POST" action = "administrare/manageTeamDelete.php?id=<?php echo $row['id']; ?>"> 
+                    <button id = "manageButton">DELETE</button>
+                </form>
+                </div>
+            </div>
+        <?php }?>          
+    </div>
+</div>
+
 
 <?php } else {?>
 <div class="loginForm">
