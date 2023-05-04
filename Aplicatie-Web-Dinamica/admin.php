@@ -140,6 +140,96 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 </div>
 
+<div class="manageRepertoriu">
+    <h2>Manage Repertory</h2>
+    <p style = "color:lightblue; font-size: 12px;">
+    <?php
+        if(isset($eventType) && $eventType === "EMPTY_REP") 
+        {
+            echo "Toate campuriile trebuie completate!";  
+        } else if (isset($eventType) && $eventType === "ADD_REP"){
+            echo "Repertoriul a fost adaugat!";
+        }else if (isset($eventType) && $eventType === "DELETE_REP"){
+            echo "Repertoriul a fost sters!";
+        }else if (isset($eventType) && $eventType === "INVALID_REP"){
+            echo "Selectie invalida!";
+        }
+     ?>
+     </p>
+    <form action = "administrare/manageRepertoriu.php" method="POST">
+        <input id = "addRepertoriuPlace" name = "inputAddRepertoriu" placeholder = "Nume Repertoriu"><br>
+        <button id = "sendButton">Adauga</button>
+    </form>
+    <form action = "administrare/manageRepertoriuDelete.php" method="POST">
+        <select name = "inputDeleteRepertoriu" id = "inputDeleteRepertoriu">
+            <option disabled selected value>Selectare Repertoriu</option>
+            <?php 
+                $stmt = $connect->prepare("SELECT * FROM repertoriu");
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $rowCounter = $result->num_rows;        
+                while($row = $result->fetch_assoc()) {        
+            ?>
+            <option value = "<?php echo htmlspecialchars($row['id']);?>"><?php echo htmlspecialchars($row['nume']);?></option>
+            <?php 
+                }
+            ?>
+        </select><br>
+        <button id = "sendButton">Delete</button>
+    </form>
+</div>
+
+<div class = "managePiese">
+    <h2>Manage Piesa</h2>
+    <p style = "color:lightblue; font-size: 12px;">
+    <?php
+        if(isset($eventType) && $eventType === "EMPTY_PIESA") 
+        {
+            echo "Toate campuriile trebuie completate!";  
+        } else if (isset($eventType) && $eventType === "ADDED_PIESA"){
+            echo "Piesa a fost adaugata cu succes!";
+        }
+     ?>
+     </p>
+    <form action = "administrare/managePiesa.php" method="POST">
+        <input placeholder = "Nume piesa" name = "inputNumePiesa" id = "addRepertoriuPlace">
+        <p>Adauga in repertoriul</p>
+        <select name = "selectRepertoriu">
+            <option disabled selected value>Selectare</option>
+            <?php 
+                $stmt = $connect->prepare("SELECT * FROM repertoriu");
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $rowCounter = $result->num_rows;        
+                while($row = $result->fetch_assoc()) {        
+            ?>
+            <option value = "<?php echo htmlspecialchars($row['id']);?>"><?php echo htmlspecialchars($row['nume']);?></option>
+            <?php 
+                }
+            ?>
+        </select><br>
+        <button id = "sendButton">Adauga</button>
+    </form>
+    <form action = "administrare/managePiesaDelete.php" method = "POST">
+    <p>Sterge piesa</p>
+        <select name = "selectRepertoriu">
+            <option disabled selected value>Stergere</option>
+            <?php 
+                $stmt = $connect->prepare("SELECT * FROM piesa");
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $rowCounter = $result->num_rows;        
+                while($row = $result->fetch_assoc()) {        
+            ?>
+            <option value = "<?php echo htmlspecialchars($row['id']);?>"><?php echo htmlspecialchars($row['nume']);?></option>
+            <?php 
+                }
+            ?>
+        </select><br>
+        <button id = "sendButtonn">Delete</button>
+    </form>
+</div>
+
 
 <?php } else {?>
 <div class="loginForm">
