@@ -160,6 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input id = "addRepertoriuPlace" name = "inputAddRepertoriu" placeholder = "Nume Repertoriu"><br>
         <button id = "sendButton">Adauga</button>
     </form>
+    <p style = "background-color: rgb(0, 68, 68);">Sectiune Delete</p>
     <form action = "administrare/manageRepertoriuDelete.php" method="POST">
         <select name = "inputDeleteRepertoriu" id = "inputDeleteRepertoriu">
             <option disabled selected value>Selectare Repertoriu</option>
@@ -188,6 +189,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "Toate campuriile trebuie completate!";  
         } else if (isset($eventType) && $eventType === "ADDED_PIESA"){
             echo "Piesa a fost adaugata cu succes!";
+        } else if (isset($eventType) && $eventType === "DELETE_PIESA"){
+            echo "Piesa a fost stearsa cu succes!";
         }
      ?>
      </p>
@@ -211,8 +214,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button id = "sendButton">Adauga</button>
     </form>
     <form action = "administrare/managePiesaDelete.php" method = "POST">
-    <p>Sterge piesa</p>
-        <select name = "selectRepertoriu">
+    <p style = "background-color: rgb(0, 68, 68);">Sectiune Delete</p>
+        <select name = "selectPiesaDelete">
             <option disabled selected value>Stergere</option>
             <?php 
                 $stmt = $connect->prepare("SELECT * FROM piesa");
@@ -230,6 +233,69 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
 </div>
 
+<div class="manageProgram">
+    <h1>Manage Program</h1>
+    <p style = "color:lightblue; font-size: 12px;">
+    <?php
+        if(isset($eventType) && $eventType === "EMPTY_PROG") 
+        {
+            echo "Toate campuriile trebuie completate!";  
+        } else if (isset($eventType) && $eventType === "ADDED_PROG"){
+            echo "Adaugata in program cu succes!";
+        } else if (isset($eventType) && $eventType === "DELETE_PROG"){
+            echo "Piesa stearsa din program cu succes!";
+        }
+     ?>
+     </p>
+    <form action = "administrare/manageProgram.php" method = "POST">
+        <select name = "inputPiesaProgram" id = "inputPiesaProgram">
+        <option disabled selected value>Selecteaza piesa</option>
+        <?php 
+            $stmt = $connect->prepare("SELECT * FROM piesa");
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $rowCounter = $result->num_rows;        
+            while($row = $result->fetch_assoc()) {        
+        ?>
+            <option value = "<?php echo htmlspecialchars($row['id']);?>"><?php echo htmlspecialchars($row['nume']);?></option>
+        <?php 
+            }
+        ?>
+            
+        </select><br>
+
+        <label for = "inputDataProgram">Selectati data</label><br>
+        <input type = "date" id = "inputDataProgram" name = "inputDataProgram" ><br>
+        <label for = "inputOraProgrm">Selectati ora</label><br>
+        <input type = "time" id = "inputOraProgram" name = "inputOraProgram" step = "60"><br>
+        <button id = "sendButton">Adauga</button>
+    </form>
+
+    <form action = "administrare/manageProgramDelete.php" method = "POST">
+        <h3 style = "margin-top: 5px; margin-bottom: 5px; background-color:rgb(0, 68, 68);">Sectiune Delete</h3>
+        <select name= "deletePiesaProgram" id = "inputPiesaProgram">
+            <option disabled selected value>Selecteaza piesa</option>
+            <?php
+                $stmt = $connect->prepare("SELECT * FROM program");
+                $stmt->execute();
+                $result = $stmt->get_result();       
+                while($row = $result->fetch_assoc()) {
+                    $idPiesaProgram = $row['id_piesa'];
+                    $stmt = $connect->prepare("SELECT * FROM piesa WHERE id = (?)");
+                    $stmt->bind_param("i", $idPiesaProgram);
+                    $stmt->execute();
+                    $result2 = $stmt->get_result();
+                    $row2 = $result2->fetch_assoc();      
+            ?>
+                <option value = "<?php echo htmlspecialchars($row['id']);?>"><?php echo htmlspecialchars($row2['nume']);?></option>
+            <?php 
+                }
+            ?>
+        </select><br>
+        <button id = "sendButton">Delete</button>
+    </form>
+
+</div>
 
 <?php } else {?>
 <div class="loginForm">

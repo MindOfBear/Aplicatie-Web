@@ -126,6 +126,12 @@ body{
 .telefon{
     text-align: center;
     position: fixed;
+    background-color:goldenrod;
+    color: black;
+    width: 500px;
+    height: 350px;
+    border-radius: 50px;
+    box-shadow: 0px 0px 10px black;
     top: 500px;
     left: 50px;
     font-size: 20px;
@@ -134,6 +140,12 @@ body{
 .fizic{
     text-align: center;
     position: fixed;
+    background-color:goldenrod;
+    color: black;
+    width: 500px;
+    height: 350px;
+    border-radius: 50px;
+    box-shadow: 0px 0px 10px black;
     top: 500px;
     right: 730px;
     font-size: 20px;
@@ -144,6 +156,12 @@ body{
     position: fixed;
     top: 500px;
     right: 50px;
+    background-color:goldenrod;
+    color: black;
+    width: 500px;
+    height: 350px;
+    border-radius: 50px;
+    box-shadow: 0px 0px 10px black;
     font-size: 20px;
     transition: font-size 0.3s ease;
 }
@@ -432,7 +450,8 @@ body{
 .noutatiParagrafe{
     width: 100%;
     min-height: 50px;
-    border-bottom-style: dotted;
+    border-bottom-style:dotted;
+    border-width: 5px;
     border-bottom-color:#268794;
 }
 
@@ -580,6 +599,7 @@ body{
     margin-top: 5px;
     margin-bottom: 5px;
     padding: 3px;
+    background-color: rgb(0, 68, 68);
 }
 #inputMembers::placeholder {
     color: white;
@@ -590,11 +610,11 @@ body{
     border-radius: 5px;
     box-shadow: inset 0px 0px 5px black;
     border-color: rgb(255, 255, 255);
-    background-color: rgb(0, 109, 109);
     color: white;
     font-size: 15px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     transition: all 0.3s ease;
+    background-color: rgb(0, 68, 68);
     
 }
 #inputMembersTextarea::placeholder {
@@ -680,6 +700,7 @@ body{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 19px;
     background-color: darkcyan;
+    box-shadow: 0px 0px 5px black;
     color: white;
     width: 150px;
     height: 80px;
@@ -789,4 +810,105 @@ body{
     color: white;
     width: 65px;
     height: 25px;
+}
+
+
+.manageProgram{
+    text-align: center;
+    background-color:rgb(0, 109, 109);
+    width: 500px;
+    height: 400px;
+    position: fixed;
+    top: 66%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    color: white;
+    box-shadow: 0px 0px 15px black;
+    border-radius: 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
+.manageProgram label{
+    font-size: 18px;
+}
+
+#inputPiesaProgram{
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    border-color:rgb(255, 255, 255);
+    background-color:rgb(0, 68, 68);
+    border-radius: 20px;
+    width: 200px;
+    height: 35px;
+}
+
+#inputDataProgram{
+    border-radius: 20px;
+    width: 150px;
+    height: 20px;
+    font-size: 16px;
+    text-align: center;
+    border-color:rgb(255, 255, 255);
+}
+#inputOraProgram{
+    border-radius: 20px;
+    width: 150px;
+    height: 20px;
+    font-size: 16px;
+    text-align: center;
+    border-color:rgb(255, 255, 255);
+}
+
+.displayProgram h1{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+.displayProgram{
+    position: absolute;
+    background-color: darkcyan;
+    color: white;
+    width: 70%;
+    height: 80%;
+    left: 250px;
+    top: 100px;
+    border-radius: 50px;
+    box-shadow: 0px 0px 15px black;
+}
+
+
+.holderTabel{
+    margin-left: 12%;
+    text-align: center;
+    background-color:rgb(0, 68, 68);
+    width: 1000px;
+    height: 550px;
+    overflow: scroll;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    box-shadow: 0px 0px 15px black;
+}
+
+.holderTabel::-webkit-scrollbar{
+    display:none;
+}
+
+.tabel{
+    border-collapse: collapse;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    box-shadow: 0 0 5px black;
+    width: 1000px;
+}
+
+.tabel thead{
+    background-color: goldenrod;
+    color: black;
+}
+
+.tabel th, td {
+    padding: 5px 10px;
+    width: 300px;
+    border: 1px solid black;
 }

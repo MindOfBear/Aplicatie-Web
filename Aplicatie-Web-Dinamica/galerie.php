@@ -1,5 +1,6 @@
 <?php
 include "header.html";
+session_start();
 ?>
 <p class = "currentPage">Galerie</p>
 <p id ="titluGalerie">Aici puteti naviga prin cateva poze cu noi!</p>
